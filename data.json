@@ -1,0 +1,13 @@
+{
+  "output": {
+    "baseLength": 3597,
+    "targetLength": 3597,
+    "length_ratio": 100,
+    "remarks": "Word count acceptable.",
+    "baseNouns": 401,
+    "targetNouns": 401,
+    "nouns_ratio": 100,
+    "spelling_mistakes": 0,
+    "incorrect_words": []
+  }
+}

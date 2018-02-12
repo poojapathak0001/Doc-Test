@@ -1,0 +1,17 @@
+@media screen(max-width: 768px) {
+	. {
+		font-size: 2rem;
+	}
+}
+
+body {
+	background: #BEDCFA;
+}
+
+/* progress bar */
+.progress {
+	border-radius: 10px;
+}
+.progress_bar {
+	width:10%;
+}
