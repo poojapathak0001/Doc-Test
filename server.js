@@ -7,7 +7,7 @@ var tokenizer = new natural.WordTokenizer();
 wordpos = new Wordpos();
 
 /* global variables */
-var noun = [], length = [], spell = [], incorrect = [];
+var noun = [], wordCount = [], spell = [], incorrect = [];
 var index = 0 , wordPer , nounPer, token, obj, spellMist, remark, i = 0;
 
 /* promise function */
@@ -90,7 +90,6 @@ var createOutput = function() {
 			console.log("Success in writing JSON");
 		}
 	})
-	return.Write("data.json");
 }
 /* end of createOutput function */
 
