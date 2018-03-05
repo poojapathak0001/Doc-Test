@@ -1,0 +1,294 @@
+﻿1 hour of web designing
+
+
+How to start designing your own website using HTML and a little bit of CSS...
+So, first things first:
+HTML is an abbreviation for Hyper Text Markup Language.HTML is what defines the structure of our web-page. We write our content within tags of HTML.
+
+CSS is an abbreviation for Cascading Style Sheets. It is used to beautify our content: which entity would be placed where, what will be its font, color or style, etc.
+
+Let’s start then.
+What is a website made of?
+ 
+A website is a collection of web-pages, which are mostly written in HTML or other comparable  markup language .
+
+HTML: The structural foundation of a web page
+
+ 
+HTML is a series of tags that tells web browsers how to render, or display, a web page. We wrap the content in these tags to describe the elements on the page and how they should be structured. 
+The basic structure of a HTML document looks like this:
+ 
+•	<!Doctype HTML> :  helps the browser differentiate between previous versions of HTML and HTML5.
+•	<html> :  is the root element of an HTML page.
+•	<head> : is a container for all head elements.
+•	<meta> : contains meta information of the HTML page.
+•	<title> : it specifies the title of the web page.
+•	<body> : consists of the main content of the web page.
+
+What you will need?
+Just a text-editor.
+
+
+HTML tags
+
+The HTML tags are elements surrounded by angle brackets.
+<tag name> content </tag name>
+•	Tags are generally written in pairs (opening-closing tag). For example: <p> </p>
+•	Some tags are unpaired too. For example: <br>, <hr> etc.
+•	HTML elements can have attributes.
+•	Attributes provide additional information about HTML elements.
+
+So let’s learn about some basic HTML tags.
+1.	Text Formatting:
+a.	Headings: Defines an important heading in your text. You can use <h1> to <h6>, with the highest number resulting in the smallest font size.
+Example: 
+
+
+
+b.	Paragraphs: inserts a paragraph break. Defines each paragraph.
+Example: 
+
+
+
+c.	Line Breaks: Line breaks are used instead of paragraphs, when you want to create a line without starting a new paragraph.
+Example: 
+
+
+
+d.	Bold Text: Makes the weight of your font bold. 
+Example:
+
+
+
+e.	Strong Text: Though it looks same as bold, but it is semantic. Instead of simply being a style, strong text shows how the text should be read or understood (especially by the screen readers and web crawlers).
+Example: 
+
+
+
+f.	Italic Text: Makes your text italicized.
+Example:
+
+
+
+g.	Emphasized Text: It have the same logic as of bold and strong tags. It looks same as italics but it is semantic. It specifies that the text should be emphasized when read.
+Example:
+
+
+
+h.	Underlined Text: Underlines your text.
+Example:
+
+
+
+i.	Strike Through:  Places a line through your text to strike it out.
+Example:
+
+
+
+j.	Block Quotes: These are useful when quoting someone or when you need a particular part of your text to stand out.
+Example:
+
+
+
+
+2.	Links:
+a.	Text Link: It is used to add a link to a specific text or a word.
+Example:
+
+
+
+b.	Link with target: It is used to open link in different window or tab instead of in same web page.
+Example:
+
+
+
+c.	Link to an email address: It opens the user’s email program to quickly send an email to address supplied.
+Example:
+
+
+
+d.	Anchored Link: It is used to jump to a particular part of the page with click of a link.
+Example:
+
+
+
+
+
+
+
+3.	Images:
+a.	Simple Image tag: This includes an image in your post.
+Example:
+
+
+
+
+b.	Image link: It is used when we want to add link to our images, i.e., when we want to redirect user to different webpage or section on clicking on image.
+Example:
+
+
+
+
+c.	Image width and height: We add the attributes width and height to give the dimensions of the image. However, it’s usually best to have them resized prior to using them.
+Example:
+
+
+
+
+
+
+4.	Lists:
+a.	Ordered List: It creates a numbered list.
+Example:
+
+
+
+
+
+
+
+b.	Unordered list with bullets: It creates list with bullets instead of numbers or alphabet.
+Example:
+
+
+
+
+
+
+
+
+5.	Special HTML characters:
+These characters are used to create special characters like copyright, ampersand, trademark etc.
+a.	Copyright ©:
+
+
+
+b.	Ampersand &:
+
+
+
+c.	Trademark ™:
+
+
+d.	Non-breaking space:
+
+
+
+e.	Registered trademark ®:
+
+
+
+
+6.	Table:
+We can create tables in HTML using <table></table> tag. Inside this tag we use different tags to create the structure of table:
+a.	<tr></tr>: This is used to create a row of table.
+b.	<th></th>: This is used to create the heading of columns.
+c.	<td></td>: This is used for creating column cells with values.
+
+Example:
+
+
+
+
+
+
+
+
+
+
+
+
+
+7.	Forms:
+We can create forms for our users to fill in order to get feedbacks or information using the <form></form> tag.
+Along with this tag we use <input> tag to create textbox for user to write information into and buttons to submit the information.
+	Input types:
+a.	Text: for simple text.
+b.	Email: for user to give email.
+c.	Color: provides color palette to user to choose color.
+d.	Date: to enter date.
+e.	Password: defines password field. The characters in password field are masked (asterisk character is shown instead).
+f.	Radio: defines a radio button
+g.	Checkbox: defines checkbox.
+h.	Button: defines simple buttons.
+i.	Submit: defines button used to submit the form information.
+
+Example:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HTML5 Semantic Elements:
+Sematic elements are elements with a meaning. They clearly describes its meaning to both the browser and the developer.
+Examples of non-semantic elements: <div>, <span>
+Examples of semantic elements: <form>, <header>
+ 
+a.	<header>:  The <header> element specifies a header for a document or section.
+The <header> element should be used as a container for introductory content.
+b.	<nav>: The <nav> element defines a set of navigation links.
+c.	<section>: The <section> element defines a section in a document.
+d.	<article>: The <article> element specifies independent, self-contained content.
+e.	<aside>: The <aside> element defines some content aside from the content it is placed in (like a sidebar).
+f.	<footer>: The <footer> element specifies a footer for a document or section. A footer typically contains the author of the document, copyright information, links to terms of use, contact information, etc.
+CSS
+A CSS (cascading style sheet) is a coding type that lets you style elements of your HTML pages by applying classes to it. To put it as simply as possible, HTML creates the pages and content, and CSS takes care of the presentation of those pages and determines how things are displayed or look.
+CSS Syntax:
+	 
+The selector points to HTML element that you want to style.
+The declaration block contains one or more declarations separated by semicolons.
+Each declaration includes a property name, and a value separated by a colon.
+The Cascade:
+A very important piece of CSS is the “Cascading” part. The browser reads style definitions from top to bottom in a style sheet. This means that a style you define lower in the style sheet will override any previous styles defined earlier in the style sheet.
+You can also have a style sheet override another style sheet. This is how we are able to override predefined styles from our blog themes or plugin widgets, as our custom style sheet is usually the last one read by the browser.
+Types of CSS:
+a.	Internal CSS: An internal style sheet just means that any styles you create will be coded right into the HTML of a particular page, in between the <head> and </head> tags.
+Example: 
+
+
+
+
+b.	External CSS: External means that all of your styles are contained within one single .css file on your server. It is recommended to use external style sheets to save on your site’s loading time. Plus, it’s much more convenient to just have everything in one place.
+Example: 
+
+
+
+
+CSS Selectors:
+a.	Element selector: The element selector selects elements based on the element name.
+Example: 
+
+
+
+
+
+
+b.	Id selector: The id selector uses the id attribute of an HTML element to select a specific element. An id should be unique within a page, so the id selector is used if you want to select a single, unique element. Do NOT start an ID name with a number!
+Example: 
+
+
+
+
+
+
+c.	Class selector: The class selector selects elements with a specific class attribute. To select elements with a specific class, write a period character, followed by the name of the class:
+Example: 
+
+
+
+
+
+d.	Grouping selectors: If you have elements with the same style definitions, you can group the selectors, to minimize the code. To group selectors, separate each selector with a comma.
+Example: 
