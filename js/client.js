@@ -1,14 +1,17 @@
 function getData() {
+  alert(1);
 	var xmlhttp = new XMLHttpRequest();
-	var url = "http://localhost:3000/db";
-
+	var url = "http://localhost:3001/db";
+alert(5);
 	xmlhttp.open("GET", url, true);
  	xmlhttp.send(); 
-
+alert(7);
 	xmlhttp.onreadystatechange = function()  {
     if (this.readyState == 4 && this.status == 200) {
+         alert(8);
          var myObj =  JSON.parse(this.responseText);
 
+         alert(6);
             var htmlText = '<div class="pt-5"> <div class="container"> <div class="row"> <div class="col-md-12"> <h2>Sections</h2>'
                             + ' <hr class="mb-4"> </div> </div> </div> </div>';
             
@@ -56,8 +59,6 @@ function getData() {
                             +'</tbody>'
                           +'</table>'
                         +'</div>'
-                        +'</div>'
-                        +'<div class="card-footer">footrr</div>'
                         +'</div>';
 
             var targetHtml = '<div class="card my-4">'
@@ -103,8 +104,6 @@ function getData() {
                             +'</tbody>'
                           +'</table>'
                         +'</div>'
-                        +'</div>'
-                        +'<div class="card-footer">footrr</div>'
                         +'</div>';
 
             htmlText += baseHtml + targetHtml + '</div>';

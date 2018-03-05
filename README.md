@@ -6,7 +6,7 @@ HTML5
 CSS3
 Bootstrap4
 JavaScript
-nodejs (APIs : natural, textract, wordpos.
+nodejs (APIs : natural)
 
 #File structre
 index.html          //the main html file
@@ -19,8 +19,6 @@ node_modules        //contains preinstalled required modules of nodejs
 Download nodejs from here https://nodejs.org/en/download/
 Install all the APIs 
  $npm install natural
- $npm install wordpos
- $npm install textract
 
 Install the json server
  $ npm install -g json-server

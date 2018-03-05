@@ -14,7 +14,7 @@ var tagger = new natural.BrillPOSTagger(lexicon, rules);
 
 /* global variables */
 var baseFileAttributes = {
-  name:"",
+  name:"HTML.txt",
   wordCount: 0,
   nounCount: 0,
   verbCount: 0,
@@ -22,7 +22,7 @@ var baseFileAttributes = {
 };
 
 var targetFileAttributes = {
-  name:"",
+  name:"demo.txt",
   wordCount: 0,
   nounCount: 0,
   verbCount: 0,
@@ -38,78 +38,57 @@ var result = {
 
 var baseText, targetText;
 var wordCountBase = 0, nounLenBase = 0, adjLenBase = 0, verbLenBase = 0;
-var wordCountTarget = 0, nounLenTarget = 0, adjLenTarget = 0, verbLenTarget = 0;
+var wordCountTar = 0, nounLenTar = 0, adjLenTar = 0, verbLenTar = 0;
 var isReady = false;
 var taskCount = 0;
 var index = 0 ;
 
-let oupt=[baseFile, tarFile, result];
+var basetoken, targettoken;
 
-let data = {output:oupt};
+var baseFileRead= fs.readFileSync("../assets/HTML.txt",  'utf-8');
+ basetoken = tokenizer.tokenize(baseFileRead);
+ 
+   // get tagger pairs from array
+              var taggerJSON=tagger.tag(basetoken);
+               baseText = baseFileRead;
+                            baseFileAttributes.wordCount = basetoken.length;
+                            for(var pair of taggerJSON){
+                              if(pair[1] == "NN" || pair[1] == "NNP" || pair[1] == "NNPS"){
+                                baseFileAttributes.nounCount++;
+                              } else if(pair[1] == "VB" || pair[1] == "VBD" || pair[1] == "VBG" || pair[1] == "VBN" || pair[1] == "VBP" || pair[1] == "VBZ"){
+                                baseFileAttributes.verbCount++;
+                              } else if(pair[1] == "JJ" || pair[1] == "JJR" || pair[1] == "JJS"){
+                                baseFileAttributes.adjCount++;
+                              }
+                            }
+                          
 
-/* promise function */
-let readFile = function(url) {
-	return new Promise(function(resolve,reject){
-		textract.fromFileWithPath(url,{preserveLineBreaks : true}, function(error,text){
-			if(error)
-				reject(error);
-			else {
-				/* working on target file */
-				if(index == 2)	{
-					spell = tokenizer.tokenize(text);;
-					resolve();
-				}
-				else {
-					token = tokenizer.tokenize(text);
+var targetFileRead = fs.readFileSync("../assets/demo.txt",  'utf-8');
+  targettoken = tokenizer.tokenize(targetFileRead);
+ 
+            // get tagger pairs from array
+              var taggerJSON=tagger.tag(targettoken);
 
-					var getLiterals = function(text,function(res)	{
-						// get tagger pairs from array
-						  var taggerJSON=tagger.tag(token);
+              // save text for global function use
+              targetText = targetFileRead;
+                          targetFileAttributes.wordCount = targettoken.length;
+                          for(var pair of taggerJSON){
+                            if(pair[1] == "NN" || pair[1] == "NNP" || pair[1] == "NNPS"){
+                              targetFileAttributes.nounCount++;
+                            } else if(pair[1] == "VB" || pair[1] == "VBD" || pair[1] == "VBG" || pair[1] == "VBN" || pair[1] == "VBP" || pair[1] == "VBZ"){
+                              targetFileAttributes.verbCount++;
+                            } else if(pair[1] == "JJ" || pair[1] == "JJR" || pair[1] == "JJS"){
+                              targetFileAttributes.adjCount++;
+                            }
+                          }
 
-						  // save text for global function use
-						  switch(index){
-						    case 0 :baseText = text;
-						                baseFileAttributes.wordCount = token.length;
-						                for(var pair of taggerJSON){
-						                  if(pair[1] == "NN" || pair[1] == "NNP" || pair[1] == "NNPS"){
-						                    baseFileAttributes.nounCount++;
-						                  } else if(pair[1] == "VB" || pair[1] == "VBD" || pair[1] == "VBG" || pair[1] == "VBN" || pair[1] == "VBP" || pair[1] == "VBZ"){
-						                    baseFileAttributes.verbCount++;
-						                  } else if(pair[1] == "JJ" || pair[1] == "JJR" || pair[1] == "JJS"){
-						                    baseFileAttributes.adjCount++;
-						                  }
-						                }
-						                break;
-						    case 1 :targetText = text;
-						              targetFileAttributes.wordCount = tokenText.length;
-						              for(var pair of taggerJSON){
-						                if(pair[1] == "NN" || pair[1] == "NNP" || pair[1] == "NNPS"){
-						                  targetFileAttributes.nounCount++;
-						                } else if(pair[1] == "VB" || pair[1] == "VBD" || pair[1] == "VBG" || pair[1] == "VBN" || pair[1] == "VBP" || pair[1] == "VBZ"){
-						                  targetFileAttributes.verbCount++;
-						                } else if(pair[1] == "JJ" || pair[1] == "JJR" || pair[1] == "JJS"){
-						                  targetFileAttributes.adjCount++;
-						                }
-						              }
-						              break;
-						    }
-						    if(targetFileAttributes.length == 0)
-						    	reject();
-						else
-						resolve();
-					});
-				}				
-			}
-		});
-	});
-}
-/* end of promise function */
 
-function generateResult() {
+//generating result
+
 var points = 100;
   
   // reject file if the number of words are not within specific range
-  if(targetFileAttributes.wordCount < 1500 || targetFileAttributes.wordCount > 3500){
+  if(targetFileAttributes.wordCount < 1000 || targetFileAttributes.wordCount > 2500){
     result.status = "Rejected";
     result.remarks="Word limit is out of range!";
   } else{
@@ -151,47 +130,26 @@ var points = 100;
       }
 
       console.log("Points: "+(points+similarity)/2);
-	    // result.points = (points+similarity*100)/4;
+      // result.points = (points+similarity*100)/4;
       result.points = (points+similarity)/2;
       // give remarks based on points calculated
       if(result.points > 75 && result.points < 100){
-        result.remarks="Document seems good";
+        result.remarks="good";
       } else if(((points+similarity*100)/4) < 75){
-          result.remarks="You can write a better document";
+          result.remarks="can be better";
       } else {
-          result.remarks="Document seems to be good but requires some updations to be made";
+          result.remarks="not worth it";
       }
   }
- }
 /* function to create json object */
-var createOutput = function() {
-	
-	let json = JSON.stringify(data,null,2);
-	fs.writeFile("data.json",json,"utf8",(err)=>{
-		if(err)
-			console.log(err);
-		else {
-			console.log("Success in writing JSON");
-		}
-	})
-}
-/* end of createOutput function */
 
-/* calling functions start of program */
-readFile("./assests/HTML.txt").then(function(result){ // base file
-	console.log("Base file:" + wordCount[index]);
-	index = 1;
-	return readFile("./assets/demo.txt"); // target file
-}).then(function(result){
-	console.log("Target file:" + wordCount[index]);
-	index = 2;
-	return readFile("./assets/dictionary.txt");
-}).then(function(result){
-	return generateResult();
-}).then(function(){
-	return createOutput();
-}).then(function(){
-	console.log(data);
-}).catch(function(error){
-	console.log(error);
-});
+let data = {output:[baseFileAttributes, targetFileAttributes, result]};
+  let json = JSON.stringify(data,null,2);
+  fs.writeFile("../data.json",json,"utf8",(err)=>{
+    if(err)
+      console.log(err);
+    else {
+      console.log("Success in writing JSON");
+    }
+  })
+/* end of createOutput function */
